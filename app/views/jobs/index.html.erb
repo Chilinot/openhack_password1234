@@ -1,0 +1,10 @@
+<% provide(:title, 'All jobs') %>
+<h1>All jobs</h1>
+
+<%= will_paginate %>
+
+<div class="list-group">
+  <%= render @jobs %>
+</div>
+
+<%= will_paginate %>

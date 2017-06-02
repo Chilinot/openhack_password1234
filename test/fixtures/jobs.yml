@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 40.times do |n| %>
+job_<%= n %>:
+    title: <%= "Example Job \##{n}" %>
+    description: <%= 'Id non repudiandae nostrum error sint culpa. Ipsam tempora incidunt aut. Sequi consequatur earum ut. Fuga et in sint illum molestiae iste temporibus. Sit qui accusantium a sed.  Magni rerum quod provident consequatur corrupti. Deleniti et perferendis cupiditate et saepe maxime. Sit consequatur itaque minima earum quibusdam. Ipsa repellat quam ut beatae. Laboriosam minima vero sit adipisci qui laudantium. Dicta ea voluptates quasi.'
+ %>
+<% end %>

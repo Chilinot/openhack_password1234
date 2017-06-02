@@ -83,6 +83,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test 'should redirect index when not logged in as admin' do
+    log_in_as @user
+
+    get users_path
+
+    assert_redirected_to root_url
+
+    # Cleanup
+    delete logout_path
+  end
+
   test 'should not allow the admin attribute to be edited via the web' do
     # Log in and ensure the user is not an admin.
     log_in_as @other_user

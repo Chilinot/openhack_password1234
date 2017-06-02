@@ -1,0 +1,13 @@
+<% provide(:title, @job.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="job_info">
+      <h1>
+        <%= @job.title %>
+      </h1>
+      <p>
+        <%= @job.description.html_safe %>
+      </p>
+    </section>
+  </aside>
+</div>

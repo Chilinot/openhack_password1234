@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   # Only admins are allowed the following actions:
-  before_action :admin_user,     only: [:destroy]
+  before_action :admin_user,     only: [:destroy, :index]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -61,25 +61,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    # Confirms that the user is logged in.
-    def logged_in_user
-      unless logged_in?
-        # Store the location the user attempted to access
-        # to enable redirection back to it after login.
-        store_location
-        flash[:danger] = 'Please log in.'
-        redirect_to login_url
-      end
-    end
-
     # Confirms that the current user is the correct user.
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
-    end
-
-    # Confirms an admin user.
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
     end
 end
