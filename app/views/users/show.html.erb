@@ -24,7 +24,7 @@
 
     <dt>Jobs matching you</dt>
     <dd>
-      <%= render Job.jobs_matching_skills(@user.skills) %>
+      <%= render Job.jobs_matching_user_skills(@user) %>
     </dd>
   </div>
 </div>

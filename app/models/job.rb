@@ -16,7 +16,13 @@ class Job < ApplicationRecord
   has_many :job_skills
   has_many :skills, through: :job_skills
 
-  def self.jobs_matching_skills(skills)
-    Job.all
+  def self.jobs_matching_user_skills(user)
+    jobs = []
+    Job.all.each do |job|
+      if (job.skills & user.skills) != []
+        jobs.append job
+      end
+    end
+    jobs
   end
 end
