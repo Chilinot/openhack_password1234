@@ -1,5 +1,7 @@
 module SessionsHelper
 
+  # ==== These helpers are mostly used in the controllers ====
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
@@ -16,18 +18,6 @@ module SessionsHelper
   # Checks if a user is logged in.
   def logged_in?
     !current_user.nil?
-  end
-
-  # Confirms that the user is logged in.
-  # If not, it redirects to the login page.
-  def logged_in_user
-    unless logged_in?
-      # Store the location the user attempted to access
-      # to enable redirection back to it after login.
-      store_location
-      flash[:danger] = 'Please log in.'
-      redirect_to login_url
-    end
   end
 
   # Remembers a user in a persistent session.
