@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: jobs
+# Table name: skills
 #
 #  id          :integer          not null, primary key
 #  title       :string
@@ -9,10 +9,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Job < ApplicationRecord
-  validates :title, presence: true
-  validates :description, presence: true
+require 'test_helper'
 
-  has_many :job_skills
-  has_many :skills, through: :job_skills
+class SkillTest < ActiveSupport::TestCase
 end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: jobs
+# Table name: skills
 #
 #  id          :integer          not null, primary key
 #  title       :string
@@ -9,10 +9,13 @@
 #  updated_at  :datetime         not null
 #
 
-class Job < ApplicationRecord
+class Skill < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 
   has_many :job_skills
-  has_many :skills, through: :job_skills
+  has_many :jobs, through: :job_skills
+
+  has_many :user_skills
+  has_many :users, through: :user_skills
 end

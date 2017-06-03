@@ -1,0 +1,22 @@
+<% provide(:title, @skill.title) %>
+<div class="container">
+
+  <div class="row">
+      <h1 class="text-left"><%= @skill.title %></h1>
+  </div>
+
+  <div class="dl-horizontal">
+
+    <dt>Description</dt>
+    <dd><%= @skill.description.html_safe %></dd>
+
+    <dt>Jobs</dt>
+    <dd>
+      <% unless @skill.jobs.count == 0 %>
+        <%= render @skill.jobs %>
+      <% else %>
+        <button class="list-group-item list-group-item-action" disabled>None :(</button>
+      <% end %>
+    </dd>
+  </div>
+</div>

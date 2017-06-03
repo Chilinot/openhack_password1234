@@ -1,0 +1,9 @@
+<a href="<%= skill_path(skill) %>" class="list-group-item">
+  <h4 class="list-group-item-heading">
+    <%= skill.title %>
+    <small>
+      <%= skill.jobs.count %>
+    </small>
+  </h4>
+  <p class="list-group-item-text"><%= truncate skill.description, length: 250 %></p>
+</a>

@@ -17,13 +17,19 @@ Voluptatem porro itaque molestiae quis delectus nostrum veniam. Molestiae tempor
 Perspiciatis autem et reiciendis asperiores. Et expedita aut qui sit mollitia in iusto. Quia enim non ratione dolorum impedit non consequatur enim.
 <b>BOLD PART to test HTML escaping</b>'
 
+puts 'Adding example users...'
 User.create!(name:  'Example User',
              email: 'example@railstutorial.org',
              password:              'password72',
              password_confirmation: 'password72',
              admin: true)
 
-99.times do |n|
+User.create!(name: 'asdf',
+             email: 'asdf@asdf.com',
+             password: 'asdfasdfasdf',
+             password_confirmation: 'asdfasdfasdf')
+
+30.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password72"
@@ -33,8 +39,31 @@ User.create!(name:  'Example User',
                password_confirmation: password)
 end
 
-100.times do |n|
+puts 'Adding examples skills...'
+Skill.create!(title: 'Programming', description: 'Whatever')
+Skill.create!(title: 'Writing', description: 'Whatever')
+Skill.create!(title: 'Teaching', description: 'Whatever')
+Skill.create!(title: 'Wanking', description: 'Whatever')
+Skill.create!(title: 'Fishing', description: 'Whatever')
+Skill.create!(title: 'Killing', description: 'Whatever')
+Skill.create!(title: 'Building', description: 'Whatever')
+Skill.create!(title: 'Hacking', description: 'Whatever')
+Skill.create!(title: 'Annoying', description: 'Whatever')
+
+puts 'Adding job examples...'
+50.times do |n|
   title = "Job Example \##{n}"
   description = lorem
   Job.create!(title: title, description: description)
 end
+
+puts 'Links the first job with some skills...'
+JobSkill.create!(job: Job.first, skill: Skill.first)
+JobSkill.create!(job: Job.first, skill: Skill.second)
+JobSkill.create!(job: Job.first, skill: Skill.third)
+
+puts 'Links the first user with some skills...'
+UserSkill.create!(user: User.first, skill: Skill.first)
+UserSkill.create!(user: User.first, skill: Skill.second)
+UserSkill.create!(user: User.first, skill: Skill.third)
+UserSkill.create!(user: User.first, skill: Skill.fourth)

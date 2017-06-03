@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       remember @user
-      flash[:success] = 'Welcome to the Sample App!'
+      flash[:success] = 'Welcome to Password!'
       redirect_to @user
     else
       # The user sent bad data.

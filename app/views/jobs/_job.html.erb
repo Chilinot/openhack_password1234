@@ -1,4 +1,14 @@
 <a href="<%= job_path(job) %>" class="list-group-item">
   <h4 class="list-group-item-heading"><%= job.title %></h4>
-  <p class="list-group-item-text"><%= truncate job.description, length: 250 %></p>
+  <p class="list-group-item-text">
+    <%= truncate job.description, length: 250 %>
+  </p>
+  <div class="list-group-item-success">
+    <% job.skills.each do |skill| %>
+      <%= skill.title %>
+    <% end %>
+  </div>
+  <% #job.skills.each do |skill| %>
+    <%#= link_to skill.title, skill_path(skill), class: 'list-group-item-action' %>
+  <% #end %>
 </a>

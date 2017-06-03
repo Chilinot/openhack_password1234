@@ -12,7 +12,9 @@
 
   <div class="row">
     <div class="col-md-12">
-      HERE CATEGORIES SHOULD LIE!
+      <% @job.skills.each do |skill| %>
+        <%= link_to skill.title, skill_path(skill) %>
+      <% end %>
     </div>
   </div>
 

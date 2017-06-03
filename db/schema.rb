@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603103719) do
+ActiveRecord::Schema.define(version: 20170603155042) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -19,11 +19,36 @@ ActiveRecord::Schema.define(version: 20170603103719) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "job_skills", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_skills_on_job_id"
+    t.index ["skill_id"], name: "index_job_skills_on_skill_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

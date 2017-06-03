@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
 
-    <%= link_to 'Password1234', root_path, id: 'logo' %>
+    <%= link_to 'Password', root_path, id: 'logo' %>
 
     <nav>
       <ul class="nav navbar-nav navbar-right">
@@ -11,6 +11,7 @@
         <% if logged_in? %>
 
           <li><%= link_to 'Jobs',  jobs_path  %>
+          <li><%= link_to 'Skills', skills_path %>
 
           <% if current_user.admin? %>
             <li><%= link_to 'Users', users_path %>

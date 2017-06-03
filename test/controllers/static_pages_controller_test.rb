@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @base_title = '| Password1234 -- OpenHack 2017'
+    @base_title = '| Password -- OpenHack 2017'
   end
 
   test "should get home" do
