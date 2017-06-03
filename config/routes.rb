@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   # Jobs
   resources :jobs
-  get '/jobs', to: 'jobs#index'
 
   # Users
   resources :users
