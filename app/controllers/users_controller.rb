@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   # Only logged in users are allowed to access these actions:
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
-  # Users are only allowed to modify themselves.
-  before_action :correct_user,   only: [:edit, :update]
+  # Run restrict_users for these methods.
+  before_action :restrict_users, only: [:show, :edit, :update]
 
   # Only admins are allowed the following actions:
   before_action :admin_user,     only: [:destroy, :index]
@@ -71,5 +71,12 @@ class UsersController < ApplicationController
     # Allow only these params from the wild.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def restrict_users
+      @user = User.find(params[:id])
+      unless current_user?(@user) or current_user.admin?
+        redirect_to(root_url)
+      end
     end
 end
