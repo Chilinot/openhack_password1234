@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
 
+  # Apply for jobs
+  post '/apply',   to: 'job_applications_controller#create'
+
   # Skills
   resources :skills
 
