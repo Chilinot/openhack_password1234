@@ -1,13 +1,18 @@
 <% provide(:title, @job.title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="job_info">
-      <h1>
-        <%= @job.title %>
-      </h1>
-      <p>
-        <%= @job.description.html_safe %>
-      </p>
-    </section>
-  </aside>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-1">
+      <%= link_to image_tag('rails.png', alt: 'Rails logo'), 'http://rubyonrails.org' %>
+    </div>
+    <div class="col-md-11">
+      <h1 class="text-left"><%= @job.title %></h1>
+    </div>
+  </div>
+
+  <p class="job-description">
+    <%= @job.description.html_safe %>
+  </p>
+
+  <%= link_to 'Apply now!', '#', class: 'btn btn-lg btn-success' %>
 </div>
