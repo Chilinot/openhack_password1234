@@ -7,6 +7,7 @@
 #  skill_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  level      :integer          default(0)
 #
 
 class JobSkill < ApplicationRecord
