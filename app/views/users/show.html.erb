@@ -12,9 +12,19 @@
     </aside>
   </div>
 
-  <div class="row">
-    <div class="list-group">
-      <%= render @user.skills %>
-    </div>
+  <div class="dl-horizontal">
+    <dt>Your skills</dt>
+    <dd>
+      <% @user.skills.each do |skill| %>
+        <button class="btn btn-default">
+          <%= skill.title %>
+        </button>
+      <% end %>
+    </dd>
+
+    <dt>Jobs matching you</dt>
+    <dd>
+      <%= render Job.jobs_matching_skills(@user.skills) %>
+    </dd>
   </div>
 </div>

@@ -15,4 +15,8 @@ class Job < ApplicationRecord
 
   has_many :job_skills
   has_many :skills, through: :job_skills
+
+  def self.jobs_matching_skills(skills)
+    Job.all
+  end
 end
