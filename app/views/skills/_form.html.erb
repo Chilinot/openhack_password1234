@@ -1,0 +1,11 @@
+<%= form_for(@skill) do |f| %>
+  <%= render partial: 'shared/error_messages', locals: { obj: @skill } %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+<% end %>
