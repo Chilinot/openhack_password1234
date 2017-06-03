@@ -15,6 +15,6 @@ class JobSkill < ApplicationRecord
   belongs_to :skill
 
   def self.skill_level(job, skill)
-    JobSkill.where(job: job.id, skill: skill.id).level
+    JobSkill.where(job: job.id, skill: skill.id)[0].level
   end
 end
