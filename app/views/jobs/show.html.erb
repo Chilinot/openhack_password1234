@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-1">
-      <%= link_to image_tag('rails.png', alt: 'Rails logo'), 'http://rubyonrails.org' %>
+      <%= image_tag @job.image.url %>
     </div>
     <div class="col-md-11">
       <h1 class="text-left"><%= @job.title %></h1>

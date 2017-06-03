@@ -7,5 +7,12 @@
   <%= f.label :description %>
   <%= f.text_area :description, class: 'form-control' %>
 
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
   <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+
+<%#= form_for @user, url: users_path, html: { multipart: true } do |form| %>
+  <%#= form.file_field :avatar %>
+<% #end %>
 <% end %>
