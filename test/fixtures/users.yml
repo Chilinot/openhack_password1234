@@ -9,14 +9,14 @@
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  remember_digest :string
-#  admin           :boolean          default(FALSE)
+#  user_type       :integer          default("applicant")
 #
 
 admin:
     name: Administrator
     email: admin@ninja.io
     password_digest: <%= User.digest('password72') %>
-    admin: true
+    user_type: 2
 
 one:
     name: Some Random

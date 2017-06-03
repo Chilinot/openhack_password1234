@@ -9,10 +9,11 @@
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  remember_digest :string
-#  admin           :boolean          default(FALSE)
+#  user_type       :integer          default("applicant")
 #
 
 class User < ApplicationRecord
+  enum user_type: [:applicant, :employer, :admin]
 
   has_many :user_skills
   has_many :skills, through: :user_skills
@@ -49,6 +50,18 @@ class User < ApplicationRecord
   def forget
     # Remove hashed token from database.
     update_attribute(:remember_digest, nil)
+  end
+
+  def admin?
+    user_type == "admin"
+  end
+
+  def employer?
+    user_type == "employer"
+  end
+
+  def applicant?
+    user_type == "applicant"
   end
 
   # Returns true if the given token matches the stored digest.

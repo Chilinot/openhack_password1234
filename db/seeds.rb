@@ -18,12 +18,21 @@ Perspiciatis autem et reiciendis asperiores. Et expedita aut qui sit mollitia in
 <b>BOLD PART to test HTML escaping</b>'
 
 puts 'Adding example users...'
-User.create!(name:  'Example User',
+# Admin user
+User.create!(name:  'Admin User',
              email: 'example@railstutorial.org',
              password:              'password72',
              password_confirmation: 'password72',
-             admin: true)
+             user_type: 2)
 
+# Employer
+User.create!(name: 'Some Employer',
+             email: 'employer@example.com',
+             password: 'asdfasdfasdf',
+             password_confirmation: 'asdfasdfasdf',
+             user_type: 1)
+
+# Applicant
 User.create!(name: 'asdf',
              email: 'asdf@asdf.com',
              password: 'asdfasdfasdf',
@@ -57,10 +66,11 @@ puts 'Adding job examples...'
   Job.create!(title: title, description: description)
 end
 
-puts 'Links the first job with some skills...'
+puts 'Links the first two jobs with some skills...'
 JobSkill.create!(job: Job.first, skill: Skill.first)
 JobSkill.create!(job: Job.first, skill: Skill.second)
 JobSkill.create!(job: Job.first, skill: Skill.third)
+JobSkill.create!(job: Job.second, skill: Skill.fourth)
 
 puts 'Links the first user with some skills...'
 UserSkill.create!(user: User.first, skill: Skill.first)
