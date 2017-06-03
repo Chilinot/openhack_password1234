@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   before_action :logged_in_user
 
   # Only admins are allowed the following actions:
-  #before_action :admin_user, only: [:new, :create]
+  before_action :admin_user, only: [:new, :create]
 
   def index
     @jobs = Job.paginate(page: params[:page])
@@ -13,5 +13,24 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
   end
+
+  def new
+    @job = Job.new
+  end
+
+  def create
+    @job = Job.new(job_params)
+    if @job.save
+      redirect_to @job
+    else
+      # Re-render new page to display errors.
+      render 'new'
+    end
+  end
+
+  private
+    def job_params
+      params.require(:job).permit(:title, :description)
+    end
 
 end
