@@ -18,6 +18,8 @@ class Job < ApplicationRecord
   has_many :job_skills
   has_many :skills, through: :job_skills
 
+  has_many :job_applications, dependent: :delete_all
+
   # General validations
   validates :title, presence: true
   validates :description, presence: true

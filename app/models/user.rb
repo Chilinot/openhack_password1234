@@ -15,6 +15,8 @@
 class User < ApplicationRecord
   enum user_type: [:applicant, :employer, :admin]
 
+  has_many :job_applications, dependent: :delete_all
+
   has_many :user_skills
   has_many :skills, through: :user_skills
 
