@@ -5,7 +5,7 @@
   </p>
   <div class="list-group-item-success">
     <% job.skills.each do |skill| %>
-      <%= skill.title %>
+      <%= skill.title %>(<b><%= JobSkill.skill_level(job, skill) %></b>)
     <% end %>
   </div>
 </a>
