@@ -20,6 +20,18 @@
           <%= skill.title %>
         </button>
       <% end %>
+
+      <div class="dropdown">
+        <a href="#" class"dropdown-toggle" data-toggle="dropdown">
+          Add more skills <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Adsf', '#' %></li>
+          <% Skill.all.each do |skill| %>
+            <li><%= link_to skill.title, skills_path, method: :post %></li>
+          <% end %>
+        </ul>
+      </div>
     </dd>
 
     <dt>Jobs matching you</dt>
