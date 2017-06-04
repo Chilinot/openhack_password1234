@@ -13,4 +13,8 @@
 class UserSkill < ApplicationRecord
   belongs_to :user
   belongs_to :skill
+
+  def self.skill_level(user, skill)
+    UserSkill.where(user: user.id, skill: skill.id)[0].level
+  end
 end

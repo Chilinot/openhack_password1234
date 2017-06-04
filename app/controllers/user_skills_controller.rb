@@ -13,6 +13,6 @@ class UserSkillsController < ApplicationController
 
   private
     def userskill_params
-      params.require(:userskill).permit(:user_id, :skill_id)
+      params.require(:userskill).permit(:user_id, :skill_id, :level)
     end
 end
