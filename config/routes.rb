@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
 
   # Apply for jobs
-  post '/apply',   to: 'job_applications_controller#create'
+  post '/apply',   to: 'job_applications#create'
 
   # Skills
   resources :skills

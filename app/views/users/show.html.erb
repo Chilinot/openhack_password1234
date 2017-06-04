@@ -17,7 +17,7 @@
     <dd>
       <% @user.skills.each do |skill| %>
         <button class="btn btn-default">
-          <%= skill.title %>
+          <%= image_tag skill.image(:thumb) %>
         </button>
       <% end %>
 

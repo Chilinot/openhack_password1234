@@ -2,25 +2,36 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-1">
-      <%= image_tag @job.image.url %>
-    </div>
-    <div class="col-md-11">
-      <h1 class="text-left"><%= @job.title %></h1>
-    </div>
+    <h1 class="text-left"><%= @job.title %></h1>
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-      <% @job.skills.each do |skill| %>
-        <%= link_to skill.title, skill_path(skill) %>
-      <% end %>
+
+    <div class="dl-horizontal">
+      <dt>Skills required</dt>
+      <dd>
+        <% @job.skills.each do |skill| %>
+          <%= link_to "#{image_tag(skill.image(:thumb))} (#{JobSkill.skill_level(@job, skill)})".html_safe, skill_path(skill) %>
+        <% end %>
+      </dd>
+
+      <dt>Description</dt>
+      <dd>
+        <%= @job.description.html_safe %>
+      </dd>
     </div>
   </div>
 
-  <p class="job-description">
-    <%= @job.description.html_safe %>
-  </p>
-
-  <%= link_to 'Apply now!', '#', class: 'btn btn-lg btn-success' %>
+  <% if current_user.applicant? %>
+    <%= link_to 'Apply now!', apply_path(job_application: { job_id: @job.id, user_id: current_user.id }), method: :post, class: 'btn btn-lg btn-success' %>
+  <% else %>
+    <div class="row">
+      <h4>Job applications</h4>
+      <div class="row">
+        <div class="list-group">
+          <%= render @job.job_applications %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -6,17 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-lorem = 'Id non repudiandae nostrum error sint culpa. Ipsam tempora incidunt aut. Sequi consequatur earum ut. Fuga et in sint illum molestiae iste temporibus. Sit qui accusantium a sed.
-
-Magni rerum quod provident consequatur corrupti. Deleniti et perferendis cupiditate et saepe maxime. Sit consequatur itaque minima earum quibusdam. Ipsa repellat quam ut beatae. Laboriosam minima vero sit adipisci qui laudantium. Dicta ea voluptates quasi.
-
-Et consequuntur qui quisquam facere. Eum porro corrupti accusamus et dolor quia est aut. Labore dolores nostrum autem fugiat ipsam quibusdam.
-
-Voluptatem porro itaque molestiae quis delectus nostrum veniam. Molestiae temporibus id culpa harum sint ullam corrupti. Aut nihil ea non minima officia iste nobis debitis.
-
-Perspiciatis autem et reiciendis asperiores. Et expedita aut qui sit mollitia in iusto. Quia enim non ratione dolorum impedit non consequatur enim.
-<b>BOLD PART to test HTML escaping</b>'
-
 puts 'Adding example users...'
 # Admin user
 User.create!(name:  'Admin User',
@@ -49,31 +38,52 @@ User.create!(name: 'asdf',
 end
 
 puts 'Adding examples skills...'
-Skill.create!(title: 'Programming', description: 'Whatever')
-Skill.create!(title: 'Writing', description: 'Whatever')
-Skill.create!(title: 'Teaching', description: 'Whatever')
-Skill.create!(title: 'Wanking', description: 'Whatever')
-Skill.create!(title: 'Fishing', description: 'Whatever')
-Skill.create!(title: 'Killing', description: 'Whatever')
-Skill.create!(title: 'Building', description: 'Whatever')
-Skill.create!(title: 'Hacking', description: 'Whatever')
-Skill.create!(title: 'Annoying', description: 'Whatever')
+Skill.create!(title:       'Programming',
+              description: 'Some text tahalsdf lasdfj',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/programmer.png"))
+
+
+#File.new("#{Rails.root}/path/to/somefile.jpg")
+
+Skill.create!(title:       'Journalist',
+              description: 'Whatever',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/journalist.png"))
+
+Skill.create!(title:       'Driving',
+              description: 'Whatever',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/chauffer.png"))
+
+Skill.create!(title:       'Painting',
+              description: 'Whatever',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/painter.png"))
+
+Skill.create!(title:       'Graphic Design',
+              description: 'Whatever',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/graphic-designer.png"))
+
+Skill.create!(title:       'Sewing',
+              description: 'Whatever',
+              image:       File.new("#{Rails.root}/app/assets/images/111826-people-skills/png/seamstrees.png"))
+
 
 puts 'Adding job examples...'
-50.times do |n|
-  title = "Job Example \##{n}"
-  description = lorem
-  Job.create!(title: title, description: description)
-end
+Job.create!(title: 'Web developer ninja needed',
+            description: 'We are in need of a super awesome web developer to help expand our team and develop awesome websites as well as fight crime at night.')
 
-puts 'Links the first two jobs with some skills...'
-JobSkill.create!(job: Job.first, skill: Skill.first)
-JobSkill.create!(job: Job.first, skill: Skill.second)
-JobSkill.create!(job: Job.first, skill: Skill.third)
-JobSkill.create!(job: Job.second, skill: Skill.fourth)
+Job.create!(title: 'Batman', description: 'Literally Batman. We need you to save Gotham!')
 
-puts 'Links the first user with some skills...'
-UserSkill.create!(user: User.first, skill: Skill.first)
-UserSkill.create!(user: User.first, skill: Skill.second)
-UserSkill.create!(user: User.first, skill: Skill.third)
-UserSkill.create!(user: User.first, skill: Skill.fourth)
+puts 'Links jobs with skills...'
+JobSkill.create!(job: Job.first, skill: Skill.first, level: 8)
+JobSkill.create!(job: Job.first, skill: Skill.second, level: 2)
+JobSkill.create!(job: Job.first, skill: Skill.third, level: 1)
+
+JobSkill.create!(job: Job.second, skill: Skill.first, level: 10)
+JobSkill.create!(job: Job.second, skill: Skill.third, level: 10)
+
+puts 'Links users with skills...'
+UserSkill.create!(user: User.first, skill: Skill.first, level: 3)
+UserSkill.create!(user: User.first, skill: Skill.second, level: 1)
+UserSkill.create!(user: User.first, skill: Skill.third, level: 5)
+UserSkill.create!(user: User.first, skill: Skill.fourth, level: 2)
+
+UserSkill.create!(user: User.third, skill: Skill.first, level: 10)
