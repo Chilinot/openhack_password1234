@@ -13,6 +13,19 @@
         <% @job.skills.each do |skill| %>
           <%= link_to "#{image_tag(skill.image(:thumb))} (#{JobSkill.skill_level(@job, skill)})".html_safe, skill_path(skill) %>
         <% end %>
+
+        <% if current_user.admin? or current_user.employer? %>
+          <div class="dropdown">
+            <a href="#" class"dropdown-toggle" data-toggle="dropdown">
+              Add more skills <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% Skill.all.each do |skill| %>
+                <li><%= link_to skill.title, add_job_skill_path(jobskill: {skill_id: skill.id, job_id: @job.id, level: 1}), method: :post %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </dd>
 
       <dt>Description</dt>
@@ -26,7 +39,7 @@
     <%= link_to 'Apply now!', apply_path(job_application: { job_id: @job.id, user_id: current_user.id }), method: :post, class: 'btn btn-lg btn-success' %>
   <% else %>
     <div class="row">
-      <h4>Job applications</h4>
+      <h4>Received applications</h4>
       <div class="row">
         <div class="list-group">
           <%= render @job.job_applications %>

@@ -25,14 +25,14 @@ class Job < ApplicationRecord
   validates :description, presence: true
 
   # Images
-  has_attached_file :image,
-                     styles: {
-                       medium: "300x300>",
-                       thumb: "100x100>"
-                     },
-                     default_url: "/images/:style/missing.png"
+  #has_attached_file :image,
+  #                   styles: {
+  #                     medium: "300x300>",
+  #                     thumb: "100x100>"
+  #                   },
+  #                   default_url: "/images/:style/missing.png"
 
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  #validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   # Retrieves all jobs that require skills matching the user.
   def self.jobs_matching_user_skills(user)
