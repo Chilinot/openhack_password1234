@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # Skills
   resources :skills
 
+  # Add a skill to a user
+  post '/add_skill', to: 'user_skills#create'
+
   # Jobs
   resources :jobs
 

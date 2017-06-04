@@ -16,9 +16,9 @@
     <dt>Your skills</dt>
     <dd>
       <% @user.skills.each do |skill| %>
-        <button class="btn btn-default">
+        <a href="<%= skill_url(skill) %>" class="btn btn-default">
           <%= image_tag skill.image(:thumb) %>
-        </button>
+        </a>
       <% end %>
 
       <div class="dropdown">
@@ -26,9 +26,8 @@
           Add more skills <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><%= link_to 'Adsf', '#' %></li>
           <% Skill.all.each do |skill| %>
-            <li><%= link_to skill.title, skills_path, method: :post %></li>
+            <li><%= link_to skill.title, add_skill_path(userskill: {skill_id: skill.id, user_id: @user.id}), method: :post %></li>
           <% end %>
         </ul>
       </div>
